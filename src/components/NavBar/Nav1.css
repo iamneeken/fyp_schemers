@@ -1,0 +1,31 @@
+.nav1 {
+	width: 100%;
+	z-index: 99;
+	position: relative;
+	background: rgb(243, 243, 243) !important;
+}
+.nav1 ul li {
+	display: inline;
+	font-size: 12px;
+}
+.nav1Links {
+	text-align: right;
+}
+.hoverText2 {
+	border-left: 1px solid black;
+	padding: 0 15px;
+}
+.hoverText:hover {
+	transition: all 0.3s ease;
+	color: rgb(161, 156, 156) !important;
+}
+
+.navLinks3 {
+	text-align: right;
+	margin-top: 10px;
+	margin-right: 20px;
+	padding: 0px 10px;
+	position: relative;
+	color: rgb(243, 243, 243) !important;
+	z-index: 99;
+}
