@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
+from rest_framework import status
 
 # from .productsList import products
 from productmanagement.models import Product
-from .serializer import ProductSerializer
-# Create your views here.
+from base.serializer import ProductSerializer
 
 
 #This function shows what routes we have and what our api is going to look
@@ -30,17 +30,17 @@ def getRoutes(request):
     ]
 
     return Response(routes) 
-# If the safe parameter is set to False, any object can be passed for serialization.
-#  Otherwise only dict instances are allowed.
+
+
 
 @api_view(['GET'])
 def getProducts(request):
     products = Product.objects.all()
     serializer = ProductSerializer(products, many=True) # many= True only returns every items.
-
     return Response(serializer.data)
 
-    
+
+
 @api_view(['GET'])
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
