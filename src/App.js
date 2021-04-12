@@ -11,7 +11,9 @@ import Register from './components/User/Register';
 
 import Nav1 from './components/NavBar/Nav1';
 import Nav2 from './components/NavBar/Nav2';
-import Nav3 from './components/NavBar/Nav3';
+// import Nav3 from './components/NavBar/Nav3';
+  
+import CartScreen from './components/cart/CartScreen';
 
 function App()
 {
@@ -19,11 +21,12 @@ function App()
       <Router>
         <Nav1 />
         <Nav2 />
-        <Nav3 />
+
           <Route path='/' exact component={Home} />
           <Route path='/login' exact component={Login} />
           <Route path='/register' exact component={Register} />
           <Route path='/product/:id' component={ProductScreen} />
+          <Route path='/cart/:id' component={CartScreen} />
         
       </Router>
       );

@@ -1,1 +1,81 @@
 @import url('https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css');
+img {
+	height: 600px;
+	width: 600px;
+}
+.wrapper {
+	display: grid;
+	grid-template-columns: 50% 25% 25%;
+}
+.breadcrumb {
+	background-color: white;
+}
+.imageSide {
+	text-align: center;
+}
+.descriptionSide {
+	max-height: 500px;
+}
+h1 {
+	font-size: 40px;
+	border: 1px solid rgb(216, 216, 216);
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	padding: 5px;
+}
+.ratingSide {
+	border: 1px solid rgb(216, 216, 216);
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	padding: 5px;
+}
+.descriptionSide p {
+	border: 1px solid rgb(216, 216, 216);
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	padding: 5px;
+}
+
+.buySection {
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.forBorder {
+	border: 1px solid rgb(216, 216, 216);
+	width: 300px;
+	text-align: center;
+}
+.forBorder p {
+	border: 1px solid rgb(216, 216, 216);
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+}
+.quantitySelector {
+	margin-top: -90px;
+}
+
+button {
+	border: none;
+	margin: 15px;
+	outline: 0;
+	padding: 12px;
+	color: white;
+	background-color: #000;
+	text-align: center;
+	cursor: pointer;
+	width: 60%;
+	font-size: 18px;
+}
+button:hover {
+	opacity: 0.7;
+}
+#stockBorder {
+	border: 1px solid rgb(216, 216, 216);
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+}

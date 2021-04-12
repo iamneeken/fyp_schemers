@@ -14,7 +14,7 @@ function Navbar() {
                         <label for="close-btn" className='btn close-btn'>
                             <i className="fas fa-times"></i>
                         </label>
-                        <li> <Link to='/cart'  style= {{color: 'black', textDecoration : 'none',}}><i className='fas fa-shopping-cart'></i></Link></li>
+                        <li> <Link to='/cart/:id'  style= {{color: 'black', textDecoration : 'none',}}><i className='fas fa-shopping-cart'></i></Link></li>
                         <li><Link>NEW RELEASE</Link></li>
                         <li>
                             <Link className='desktop-item'>PRODUCTS</Link>

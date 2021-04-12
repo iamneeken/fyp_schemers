@@ -1,5 +1,13 @@
 import React from 'react';
-import {  useEffect } from 'react';
+import {  useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+
+import Loader from '../Loader'
+import Message from '../Message'
+
+import { login } from '../actions/userActions'
 
 import loginPic from './login.svg';
 import registerPic from './register.svg';
@@ -9,42 +17,64 @@ import {goto_signup} from "./signup.js";
 
 
 
-function Login() {
+function Login({location, history}) {
 
     useEffect(() => {
         // Update the document title using the browser API
         goto_signup(window.location.href,document.getElementById("sign-up-btn"),document.getElementById("sign-in-btn")); 
 
       });
-    
+
+    const [email, setEmail]  = useState('')
+    const [password, setPassword]  = useState('')
+
+    const dispatch = useDispatch()
+
+    const redirect = location.search ? location.search.split('?')[1] : '/'
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {error, loading, userInfo} = userLogin
+
+    useEffect(()=>{
+        if(userInfo){
+            history.push(redirect)
+        }
+    },[history, userInfo, redirect])
+
+    const submitHandler= (e) => {
+        e.preventDefault()
+        dispatch(login(email, password))
+    }
+
     return (
         <div>
             <div className="containerLogin">
                 <div className="forms-container">
                     <div className="signin-signup">
-                        <form action="" className="sign-in-form">
+                        <form onSubmit={submitHandler} className="sign-in-form">
+
                             <h2 className="title">Sign In</h2>
-                            <div className="input-field">
+                            {error && < Message>{error}</Message>}
+                            {loading && <Loader/>}
+                            <div className="input-field" id='email'>
                                 <i className="fas fa-user"> </i>
-                                    <input type="text" placeholder='Username'/>
+                                    <input 
+                                    type="email" 
+                                    placeholder='Enter Email Address' 
+                                    onChange={(e) => setEmail(e.target.value)}/>
                             </div>
-                            <div className="input-field">
+
+                            <div className="input-field" id='password'>
                                 <i className="fas fa-lock"> </i>
-                                    <input type="password" placeholder='Password'/>
+                                    <input 
+                                    type="password" 
+                                    placeholder='Enter Password'
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    />
                             </div>
                             <input type="submit" value='Sign In' className='btnLogin solid'/>
-                            {/* <p className="social-text">Or Sign in with social platform</p>
-                            <div className="social-media">
-                                <a href="#" className="social-icon">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" className="social-icon">
-                                    <i className="fab fa-google"></i>
-                                </a>
-                                <a href="#" className="social-icon">
-                                    <i className="fab fa-twitter"></i>
-                                </a>
-                            </div> */}
+                            
+
                         </form>
 
                         <form action="" className="sign-up-form">
@@ -93,18 +123,6 @@ function Login() {
                                 <label style={{marginLeft:9}} for="male">Other</label>
                             </div>
                             <input type="submit" value='Sign Up' className='btnLogin solid'/>
-                            {/* <p className="social-text">Or Sign up with social platform</p>
-                            <div className="social-media">
-                                <a href="#" className="social-icon">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" className="social-icon">
-                                    <i className="fab fa-google"></i>
-                                </a>
-                                <a href="#" className="social-icon">
-                                    <i className="fab fa-twitter"></i>
-                                </a>
-                            </div> */}
                         </form>
                     </div>
                 </div>
@@ -112,8 +130,14 @@ function Login() {
                     <div className="panel left-panel">
                         <div className="content">
                             <h3>New Here?</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita voluptatem fugiat eos error cumque consectetur, totam dolorum dignissimos debitis autem. Nihil suscipit debitis quis sed tempore molestias impedit aperiam deleniti!</p>
-                            <button className='btn transparent' id='sign-up-btn' onClick={sign_up_btn} >Sign up</button>
+                            <p>Join the Schemers Family!</p>
+                            <button 
+                            // to={redirect ? `/register?redirect=${redirect}` : '/register'} //how to fix this?
+                            // to="/login/#register"
+                            className='btn transparent' 
+                            id='sign-up-btn' 
+                            onClick={sign_up_btn} 
+                            >Sign up</button>
                         </div>
                         <img src={loginPic} className='image' alt=""/>
                     </div>
@@ -121,7 +145,7 @@ function Login() {
                     <div className="panel right-panel">
                         <div className="content">
                             <h3>One of us?</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita voluptatem fugiat eos error cumque consectetur, totam dolorum dignissimos debitis autem. Nihil suscipit debitis quis sed tempore molestias impedit aperiam deleniti!</p>
+                            <p>Login to your account!</p> 
                             <button className='btn transparent' id='sign-in-btn'  onClick={sign_in_btn} >Sign in</button>
                         </div>
                         <img src={registerPic} className='image' alt=""/>
