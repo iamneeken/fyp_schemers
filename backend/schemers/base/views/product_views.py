@@ -27,6 +27,8 @@ def getRoutes(request):
         'api/products/<id>/reviews/',
         'api/products/delete/<id>/',
         'api/products/update/<id>/',
+        
+        'api/users/login/',
     ]
 
     return Response(routes) 
