@@ -1,20 +1,71 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav1.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { logout }from '../actions/userActions'
 
-function nav1() {
+
+function Nav1() {
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo} = userLogin
+
+    const dispatch = useDispatch()
+
+    const logoutHandler = () =>{
+        dispatch(logout())
+    }
     return (
         <div className='nav1' >
             <nav>
-                <ul>
+            <ul>
                     <p className='nav1Links'>
-                    <li> <Link to="/login" className='hoverText'  style= {{color: 'black', textDecoration : 'none', marginRight: 10}}> LOG IN </Link></li>
-                    <li> <Link to="/login/#register" className='hoverText hoverText2' style= {{color: 'black', textDecoration : 'none', marginRight: 15}}>  JOIN US </Link> </li>
+                  
+                    {userInfo ? (
+                        <div 
+                        class="dropdown"
+                        title={userInfo.name}
+                        id='name'>
+                        <Link 
+                        class="dropdown-toggle" 
+                        // type="button" id="dropdownMenuButton" 
+                        title={userInfo.name}
+                        data-toggle="dropdown" 
+                        aria-haspopup="true" 
+                        aria-expanded="false"
+                        style= {{color: 'black', 
+                        textDecoration : 'none', 
+                        marginRight: 15,
+                        marginTop:3, 
+                        fontSize: 13}}
+                        >
+                        {userInfo.name}
+                        </Link>
+                        <div class="dropdown-menu" 
+                        aria-labelledby="dropdownMenuButton"
+                        
+                        >
+                          <a class="dropdown-item" to='/profile'>User Profile</a>
+                          <a class="dropdown-item" onClick={logoutHandler}>Logout</a>
+
+                        </div>
+                      </div>
+                    ):(
+                        <li> <Link to="/login" className='hoverText'  style= {{color: 'black', textDecoration : 'none', marginRight: 10}}> LOG IN </Link></li>
+                    )}
+
+                    <li> 
+                    <Link to="/register" 
+                    className='hoverText hoverText2' 
+                    style= {{color: 'black', textDecoration : 'none', marginRight: 15}}>  
+                    JOIN US 
+                    </Link> 
+                    </li>
                     </p>
                 </ul>             
             </nav>
         </div>
-    );
+    );  
 }
 
-export default nav1;
+export default Nav1;

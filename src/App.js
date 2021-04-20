@@ -9,9 +9,10 @@ import ProductScreen from './components/ProductScreen';
 import Login from './components/User/Login';
 import Register from './components/User/Register';
 
+
 import Nav1 from './components/NavBar/Nav1';
 import Nav2 from './components/NavBar/Nav2';
-// import Nav3 from './components/NavBar/Nav3';
+
   
 import CartScreen from './components/cart/CartScreen';
 

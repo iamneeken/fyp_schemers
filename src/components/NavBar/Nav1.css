@@ -1,6 +1,6 @@
 .nav1 {
 	width: 100%;
-	z-index: 99;
+	z-index: 9999999;
 	position: relative;
 	background: rgb(243, 243, 243) !important;
 }
@@ -19,8 +19,11 @@
 	transition: all 0.3s ease;
 	color: rgb(161, 156, 156) !important;
 }
-
-.navLinks3 {
+.dropdown-menu {
+	z-index: 9999;
+	position: absolute;
+}
+/* .navLinks3 {
 	text-align: right;
 	margin-top: 10px;
 	margin-right: 20px;
@@ -28,4 +31,4 @@
 	position: relative;
 	color: rgb(243, 243, 243) !important;
 	z-index: 99;
-}
+} */
