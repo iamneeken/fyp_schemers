@@ -5,11 +5,9 @@ img {
 }
 .wrapper {
 	display: grid;
-	grid-template-columns: 50% 25% 25%;
+	margin-top: 20px;
 }
-.breadcrumb {
-	background-color: white;
-}
+
 .imageSide {
 	text-align: center;
 }
@@ -78,4 +76,8 @@ button:hover {
 	border-top: 0px;
 	border-left: 0px;
 	border-right: 0px;
+}
+.reviewSection {
+	margin-left: 70px;
+	margin-top: 50px;
 }

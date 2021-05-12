@@ -1,21 +1,31 @@
 import React, {useState, useEffect} from 'react';
 // import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import ProductView from './ProductView';
 import './products.css';
 import { listProducts } from '../actions/productActions'
 import Loader from '../Loader';
 import Message from '../Message';
+import SearchBar from '../SearchBar'
 
-function Products() 
+
+import { useHistory } from 'react-router-dom'
+
+function Products(props) 
 {
     // const [products, setProducts] = useState([])
 
     //useEffect() fires up everytime whenever components loads or one of the state values is updated
-
+    let history = useHistory()
     const dispatch = useDispatch()
     const productList= useSelector(state => state.productList)
     const {error, loading, products} = productList
+    
+    let keyword = history.location.search
+
+    console.log(keyword)
+ 
     useEffect(()=>{
 
         // async function fetchProducts(){
@@ -24,16 +34,17 @@ function Products()
         //     setProducts(data)
         //     console.log(data)
         // }
-
         // fetchProducts()
-        dispatch(listProducts())
-    }, [dispatch])//Leaving empty array here because we only want this when the component loads not when actual state elements gets updated
+        dispatch(listProducts(keyword))
+    }, [dispatch,keyword])
 
 
 
     return (
+        
             <div>
-                <h3 className='newRelease'>NEW RELEASE</h3>
+                {/* //<SearchBar/> */}
+                
                 { loading  ? <Loader />
                     : error ?  <Message>{error}</Message>  
                     :
@@ -45,7 +56,6 @@ function Products()
                         ))} 
                     </div>
                 }
-
                 
             </div>    
             )

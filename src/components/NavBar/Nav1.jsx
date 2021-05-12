@@ -45,7 +45,7 @@ function Nav1() {
                         aria-labelledby="dropdownMenuButton"
                         
                         >
-                          <a class="dropdown-item" to='/profile'>User Profile</a>
+                          <Link class="dropdown-item" to='/profile'>User Profile</Link>
                           <a class="dropdown-item" onClick={logoutHandler}>Logout</a>
 
                         </div>

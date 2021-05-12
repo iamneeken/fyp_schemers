@@ -1,0 +1,27 @@
+.containers {
+	margin-top: 25px;
+	width: 550px;
+	height: 100%;
+	margin-left: 10px;
+}
+
+.content {
+	height: 100%;
+	width: 600px;
+	margin-left: 50px;
+}
+
+.contentHead {
+	font-size: 60px;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+/* sup {
+	font-style: italic;
+	font-size: smaller;
+} */
+
+span {
+	color: pink;
+}

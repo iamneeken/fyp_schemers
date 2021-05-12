@@ -1,12 +1,17 @@
 import React from 'react';
-import Products from './Products/Products';
 
+import Products from './Products/Products';
+import Carousel from './Products/Carousel';
+import SearchBar from './SearchBar'
 
 
 function Home() {
     return (
         <div>
-            <Products />         
+            <Carousel/>
+            <SearchBar/>
+            <Products />      
+
         </div>
     )
 }

@@ -14,17 +14,20 @@ function ProductView( { product } ) {
                     <img src={product.image} className='img'/>
                 </Link>
 
-                <Link to={`/product/${product._id}`} style= {{color: '#4F4F4F', textDecoration : 'none'}}>
+                <Link to={`/product/${product._id}`} 
+                style= {{color: '#4F4F4F', textDecoration : 'none'}}>
                     <h3>{product.name}</h3>
                 </Link>
                 
                 <div>
                     <div>
-                        <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'}/>
+                        <Rating value={product.rating} 
+                        text={`${product.numReviews} reviews`} 
+                        color={'#f8e825'}/>
                     </div>
                 </div>
-                    <p class="price">${product.price}</p>
-                    <p><button>Add to Cart</button></p>  
+                    <p class="price">Rs.{product.price}</p>
+                    
             </div>
         </div>
 

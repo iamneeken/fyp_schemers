@@ -216,7 +216,7 @@ form {
 		transform: translate(-50%, 0);
 		left: 50%;
 	} */
-	img {
+	.imageSVG {
 		visibility: hidden;
 	}
 }

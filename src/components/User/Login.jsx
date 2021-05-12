@@ -10,19 +10,13 @@ import Message from '../Message'
 import { login } from '../actions/userActions'
 
 import loginPic from './login.svg';
-import registerPic from './register.svg';
+
 import './Login.css';
-// import {sign_in_btn, sign_up_btn}  from './Transition.js';
-// import {goto_signup} from "./signup.js";
 
 
 
 function Login({location, history}) {
 
-    // useEffect(() => {
-    //     // Update the document title using the browser API
-    //     goto_signup(window.location.href,document.getElementById("sign-up-btn"),document.getElementById("sign-in-btn")); 
-    //   });
 
     const [email, setEmail]  = useState('')
     const [password, setPassword]  = useState('')
@@ -84,21 +78,19 @@ function Login({location, history}) {
                         <div className="content">
                             <h3>New Here?</h3>
                             <p>Join the Schemers Family!</p>
-                            <button 
-                            //to={redirect ? `/register?redirect=${redirect}` : '/register'} 
+                            <button                            
                             className='btn transparent'  className= 'd-none'
                             id='sign-up-btn' 
                             
                             
                             >Sign up</button>
                             <Link 
-                            // to={redirect ? `/register?redirect=${redirect}` : '/register'} //how to fix this?
                             to="/register"
                             className='btn transparent'  
                             >
                             Sign up</Link>
                         </div>
-                        <img src={loginPic} className='image' alt=""/>
+                        <img src={loginPic} className='imageSVG' alt=""/>
                     </div>
                 </div>
             </div>

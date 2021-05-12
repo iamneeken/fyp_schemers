@@ -106,7 +106,7 @@ function Register({location, history}) {
                             </div>
 
                            
-                            <div className="gender">
+                            {/* <div className="gender">
                                 <input type="radio" id='male' name='gender' value='male'/>
                                 <label style={{marginLeft:9}} for="male">Male</label>
                                 <i className="fas fa-mars" style={{marginLeft:7}}></i>
@@ -119,7 +119,7 @@ function Register({location, history}) {
 
                                 <input type="radio" id='otherGender' name='gender' value='otherGender' style={{marginLeft:9}}/>
                                 <label style={{marginLeft:9}} for="male">Other</label>
-                            </div>
+                            </div> */}
 
                             <input type="submit" value='Sign Up' className='btnRegister solid'/>
                         </form>
@@ -145,7 +145,7 @@ function Register({location, history}) {
                             Sign in
                             </Link>
                         </div>
-                        <img src={registerPic} className='image' alt=""/>
+                        <img src={registerPic} className='imageSVG' alt=""/>
                     </div>
                 </div>
              </div>

@@ -6,12 +6,13 @@ import { addToCart, removeFromCart } from '../actions/cartActions'
  
 function CartScreen({match, location, history}) {
     const productId = match.params.id
-    const quantity = location.search ? Number(location.search.split('=')[1]) : 1 //Splitting by = and getting the send index
+    const quantity = location.search ? Number(location.search.split('=')[1]) : 1 
+    //Splitting by = and getting the send index
 
     const dispatch = useDispatch()
 
     const cart= useSelector(state => state.cart)
-
+    
     const {cartItems} = cart
     console.log("cartItems: ", cartItems)
 
@@ -26,7 +27,7 @@ function CartScreen({match, location, history}) {
     }
 
     const checkoutHandler = () =>{
-        history.push('/login?redirect=shipping')
+        history.push('/shipping') 
     }
 
     //console.log("quantity: ", quantity) //Uncomment this is u want to see the quantity selected
@@ -87,14 +88,16 @@ function CartScreen({match, location, history}) {
                     <ul className="list-group">
                         <li className="list-group-item"> 
                             <h2>SubTotal ({cartItems.reduce((acc, item) => acc + item.quantity, 0 )}) </h2>
-                            ${cartItems.reduce((acc, item) => acc + item.quantity*item.price, 0 ).toFixed(2)}
+                            Rs.{cartItems.reduce((acc, item) => acc + item.quantity*item.price, 0 ).toFixed(2)}
                         </li>
 
                         <li className="list-group-item">
                          <button className='btn-block' 
                             disabled={cartItems.length === 0}
                             onClick={checkoutHandler}
-                         >Proceed To Checkout </button>                   
+                         >
+                            Proceed To Checkout
+                        </button>                   
                         </li>
                     </ul>
                 </div>
