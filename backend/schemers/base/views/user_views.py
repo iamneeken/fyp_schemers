@@ -16,7 +16,7 @@ from rest_framework import status
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    def validate(self, attrs): #took this code from official jwt github repo
+    def validate(self, attrs):
         data= super().validate(attrs)
        
         serializer = UserSerializerWithToken(self.user).data
@@ -25,7 +25,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             data[key] = value
 
         return data   
-
+ #took this code from official jwt github repo
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -52,6 +52,24 @@ def registerUser(request):
 def getUserProfile(request):
     user = request.user
     serializer = UserSerializer(user, many=False) #False makes return only one user
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateUserProfile(request):
+    user = request.user
+    serializer = UserSerializerWithToken(user, many=False) #False makes return only one user
+
+    data= request.data
+
+    user.first_name = data['name']
+    user.username = data['email']
+    user.email = data['email']
+
+    if data['password'] != '':
+        user.password = make_password(data['password'])
+        
+    user.save()
     return Response(serializer.data)
 
 @api_view(['GET'])
